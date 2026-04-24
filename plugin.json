@@ -1,0 +1,38 @@
+{
+  "name": "axiom-reflex",
+  "version": "0.1.0",
+  "description": "Hooks, skills, agents, and MCPs that make Claude Code more autonomous, resilient, and reflex-driven. Built by Axiom for AI-first solo founders.",
+  "author": {
+    "name": "Víctor Domínguez",
+    "email": "vdalhambra@gmail.com",
+    "url": "https://github.com/vdalhambra"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vdalhambra/axiom-reflex"
+  },
+  "keywords": [
+    "claude-code",
+    "hooks",
+    "skills",
+    "agents",
+    "mcp",
+    "autonomy",
+    "reflex",
+    "memory",
+    "outreach"
+  ],
+  "components": {
+    "hooks": 7,
+    "skills": 6,
+    "agents": 6,
+    "commands": 1,
+    "mcp_servers": 1
+  },
+  "requires": {
+    "claude-code": ">=2.0.0",
+    "python": ">=3.11",
+    "uv": ">=0.4.0"
+  }
+}

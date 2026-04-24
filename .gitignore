@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# User-specific data (never commit)
+.env
+refs/*.jsonl
+_logs/
+session_*.start

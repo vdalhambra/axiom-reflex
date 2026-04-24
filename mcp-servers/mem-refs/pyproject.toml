@@ -1,0 +1,22 @@
+[project]
+name = "mem-refs-mcp"
+version = "0.1.0"
+description = "Lightweight reference-tier memory for Claude Code — grep-over-JSONL MCP for Gmail threads, LinkedIn DMs, Linear projects, and other external-system pointers."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Víctor Domínguez", email = "vdalhambra@gmail.com" }
+]
+dependencies = [
+    "fastmcp>=0.2.0"
+]
+
+[project.scripts]
+mem-refs-mcp = "mem_refs.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mem_refs"]

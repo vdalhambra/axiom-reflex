@@ -1,0 +1,83 @@
+{
+  "comment": "Example settings.json fragment. Merge into your ~/.claude/settings.json to enable axiom-reflex hooks. Adjust paths if you symlinked to a custom location.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/sessionstart-heartbeat.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__claude_ai_Gmail__create_draft",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/pretooluse-gmail-dedup.sh",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__playwright__browser_click|mcp__playwright__browser_type|mcp__playwright__browser_navigate|mcp__playwright__browser_evaluate|mcp__playwright__browser_press_key|mcp__playwright__browser_select_option|mcp__playwright__browser_file_upload|mcp__playwright__browser_fill_form",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/pretooluse-playwright-pattern.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/posttooluse-scan-secrets.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/precompact-state-dump.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/stop-daily-note-reminder.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/subagentstop-summary.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
