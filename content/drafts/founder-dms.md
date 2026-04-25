@@ -177,3 +177,25 @@ Por la regla hard `feedback_real_client_review.md`, **necesito tu OK explícito 
 - Tu autorización general me deja preparar drafts. Tu OK en el chat me deja apretar el botón.
 
 **Pídeme:** "envía DM 1" / "envía todos" / "edita DM 3 con X cambio antes de enviar" — y ejecuto.
+
+---
+
+## 📤 SEND LOG — 2026-04-25 17:30 Madrid
+
+| # | Target | Channel used | Sent | URL of contact |
+|---|---|---|---|---|
+| 1 | Assaf Elovic | assafelovic.com/contact form | ✅ | (contact form, no public URL) |
+| 2 | Jack Steam | GitHub Issue (obsidian-mcp-tools) | ✅ | https://github.com/jacksteamdev/obsidian-mcp-tools/issues/85 |
+| 3 | touchskyer | GitHub Issue (memex) | ✅ | https://github.com/iamtouchskyer/memex/issues/73 |
+| 4 | Dmitri Costenco | GitHub Issue (prism-mcp) | ✅ | https://github.com/dcostenco/prism-mcp/issues/58 |
+| 5 | Romuald Członkowski | LinkedIn InMail | ✅ | (private LinkedIn thread) |
+
+**Pivots realizados:**
+- DM 1 (Twitter @assaf_elovic) → BLOCKED (no-follower DM setting). Pivot: contact form de assafelovic.com.
+- DM 2 (Twitter @jacksteamdev) → BLOCKED igual. Pivot: GitHub Issue (más builder-natural).
+
+**Próximos pasos:**
+- Monitor inbox/issues T+24h → primera respuesta probable jueves 30.
+- Si respuesta substantiva: invitar a beta lifetime $19/mo.
+- Si no hay respuesta T+72h (lunes 28 mañana): no follow-up (per drafts notes).
+- Track en `daily-review-log` como métrica.
