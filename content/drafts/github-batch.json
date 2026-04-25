@@ -1,0 +1,122 @@
+[
+  {
+    "owner": "LycheeMem",
+    "repo": "LycheeMem",
+    "stars": 237,
+    "description": "Lightweight Long-Term Memory for LLM Agents.",
+    "issue_title": "Question from adjacent builder: memory decay vs. consolidation tradeoff?",
+    "issue_body": "Hi — first off, the framing in your README on \"structured organization, lightweight consolidation, and adaptive retrieval\" is exactly the mental model I wish more memory frameworks led with. I also appreciate that you ship the LangGraph + LiteLLM + LanceDB stack as a coherent default instead of leaving wiring as homework. The action-aware/usage-aware roadmap caught my eye too.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Different layer than LycheeMem (harness automation, not LLM memory), but the consolidation problem rhymes.\n\nQuestion: in LycheeMem the consolidation step compresses conversational history into structured memory. In my stack I've been doing the opposite — letting episodic notes accumulate raw and only promoting to long-term via a weekly cron. Have you measured how aggressive consolidation should be before you start losing the \"why\" behind a memory? Curious whether your LanceDB schema preserves the raw turn or only the consolidated form.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "Goldentrii",
+    "repo": "AgentRecall",
+    "stars": 250,
+    "description": "AI Session Memory with Think-Execute-Reflect Quality Loops — give your agent a brain th",
+    "issue_title": "Compounding memory + correction capture — question on the reflect loop boundary",
+    "issue_body": "The line \"every correction saved is a mistake never repeated\" is essentially the thesis I've been building around for months — good to see someone shipping it as a coherent MCP + SDK + CLI trio instead of one of the three. The 83% digest cache savings claim on the README badge is also a concrete number, which I respect (most memory tools wave hands at \"saves tokens\").\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. The hook layer captures corrections at the harness level (e.g. blocking duplicate Gmail drafts after a 5-email incident).\n\nQuestion: in your Think-Execute-Reflect loop, where does the \"correction\" actually get written? Is it the agent self-reporting after Reflect, or do you intercept at tool-call time? I went the hook-interception route because self-report had ~30% silent skip rate in my tests — curious whether your SDK side-steps that with a different boundary.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "yogthos",
+    "repo": "Matryoshka",
+    "stars": 126,
+    "description": "MCP server for token-efficient large document analysis via the use of REPL state",
+    "issue_title": "Nucleus + Lattice over arbitrary code-gen — note from a hooks-stack builder",
+    "issue_body": "The decision to constrain the LLM to a symbolic S-expression language (Nucleus) and execute via Lattice instead of letting it write arbitrary code is genuinely interesting — most \"large doc\" MCPs I've looked at just chunk-and-pray. The link to the Recursive Language Models paper in the README is also the kind of citation hygiene I rarely see in this space.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Different layer than Matryoshka (I constrain *agent behavior* via hooks; you constrain *LLM output* via grammar) but the philosophy overlaps.\n\nQuestion: have you measured how often the LLM tries to emit invalid Nucleus and gets rejected? In my hook system the block-rate is the most useful metric I track — it tells me where the model's instinct disagrees with the rule. Curious if your Lattice parser logs the same and whether that's surfaced anywhere.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "yvgude",
+    "repo": "lean-ctx",
+    "stars": 835,
+    "description": "Reduce AI coding costs by 99% — MCP Server + Shell Hook for Cursor, Claude Code, Copilot",
+    "issue_title": "Shell Hook + MCP Server combo — question on hook boundary placement",
+    "issue_body": "The combination of a shell hook AND an MCP server in one Rust binary is the architectural choice that made me stop and read the rest. Most context tools are MCP-only, which means they can't intercept until the LLM has already decided to make the tool call. Your shell-hook layer flips that. The 42 tools / 10 read modes / 90+ patterns numbers in the README also suggest you've actually walked the long tail.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Pure shell hooks, no MCP server — chose hooks-only because Claude Code's PreToolUse runs *before* the model commits to the tool call.\n\nQuestion: how do you split logic between the shell hook and the MCP server? I'd assume hooks for blocking/redirecting and MCP for read-mode tooling, but curious if there's overlap and how you avoid double-processing.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "prassanna-ravishankar",
+    "repo": "repowire",
+    "stars": 59,
+    "description": "Peer-to-peer mesh for AI coding agents - connect Claude Code, Codex, Gemini CLI across p",
+    "issue_title": "Mesh of agents across repos — how do you handle conflicting state writes?",
+    "issue_body": "The framing in your blog post about the \"context breakout problem\" is the cleanest articulation I've seen of why solo agents hit a ceiling — and your answer (a mesh, not a bigger context window) is the right architectural shape. I also like that you didn't reinvent transport: dashboard + Telegram + Slack covers 90% of what a solo dev actually wants.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Single-agent harness, but I run a separate background agent (Rayo) that I coordinate with via a shared markdown inbox — basically a 2-node mesh with the cheapest possible protocol.\n\nQuestion: when 2+ Repowire peers write to the same project state simultaneously (file edit, branch push, memory note), what's your conflict resolution? Last-write-wins, vector clock, CRDT, or human-in-the-loop? The shared-markdown approach falls over fast at 3+ peers and I'm trying to learn before I have to solve it.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "mbailey",
+    "repo": "voicemode",
+    "stars": 1124,
+    "description": "Natural (2-way) voice conversations with Claude Code",
+    "issue_title": "README framing is exceptional — quick question on PTT vs always-on",
+    "issue_body": "The \"walking to your next meeting / cooking while debugging / holding a coffee\" framing in your README is the most honest pitch I've seen for voice in this category — it doesn't pretend voice replaces typing, it picks the moments where typing isn't an option. Also respect for the upfront warning about CC 2.1.105+ killing the MCP server on ESC; transparency over polish.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. No voice layer; my hooks deal with blocking duplicate sends and pattern injection.\n\nQuestion: do you default to push-to-talk or always-listening? I'd assume PTT for cost/privacy reasons but the \"hands busy\" use cases imply always-on. Curious where the line ended up and whether you let users override per-session — that's the kind of decision I'd love to learn from before I think about adding voice triggers to my skills.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "tercumantanumut",
+    "repo": "selene",
+    "stars": 165,
+    "description": "Selene is a desktop app that runs AI agents on your machine. Connect them to your Whats",
+    "issue_title": "Local-first desktop + chat-platform fanout — question on identity scoping",
+    "issue_body": "The choice to make every Selene primitive (chat, embeddings, voice, images) independently switchable between local and cloud is the kind of decision that takes real discipline — most \"local-first\" tools quietly hard-depend on one cloud API somewhere. The provider grid in the README (Anthropic / OpenAI / Ollama / OpenRouter / Google / Minimax / Kimi / Moonshot) plus channels (Slack / Telegram / Discord / WhatsApp) is genuinely impressive surface area for one app.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. CLI-only, no GUI, but I deal with multi-platform identity via skills (e.g. linkedin-identity-switcher).\n\nQuestion: when an agent posts to WhatsApp and Slack from the same Selene workspace, do you scope memory/state per-channel or share it? I solved this for myself by making each platform a separate skill with explicit identity rules — curious whether you went global memory or per-channel sandbox.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "AssafWoo",
+    "repo": "homebrew-pandafilter",
+    "stars": 67,
+    "description": "The context intelligence layer for AI coding agents. Compressing noise, routing content",
+    "issue_title": "Context intelligence layer — how do you decide what counts as noise?",
+    "issue_body": "The framing \"the layer between your tools and your AI\" is exactly where I think most agent stacks are weakest — everyone optimizes the model or the tools, very few optimize the membrane between them. Also notable that your first run downloads the BERT model (~90 MB, all-MiniLM-L6-v2) and caches locally instead of phoning home; that's the right default for a context tool.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Same membrane layer, different mechanism: my hooks are deterministic shell scripts (no embeddings) that block specific failure modes — no compression, just refusal.\n\nQuestion: when MiniLM scores a chunk as \"noise,\" do you drop it silently or surface a notice to the user? I deliberately make my hooks loud (stderr write + exit 1) because silent filtering destroyed my trust in two prior tools. Curious whether you've found a middle ground.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "garagon",
+    "repo": "nanostack",
+    "stars": 188,
+    "description": "Minimal AI coding agent team skills for the full engineering workflow.",
+    "issue_title": "Seven specialists in order — what enforces it when an agent skips?",
+    "issue_body": "The honesty in the README — \"inspired by gstack from Garry Tan\" credited up front, plus the explicit \"13 skills, zero dependencies, zero build step\" claim — sets the tone correctly for an OSS skill stack. The sprint metaphor (scope → plan → build → review → audit → test → ship) maps cleanly to how I actually work, and I like that you made it cross-runtime (CC, Cursor, Codex, OpenCode, Gemini, Antigravity, Amp, Cline) instead of CC-only.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Smaller in scope (no scope/plan/ship lifecycle) and CC-only because I lean on hooks, which are CC-specific.\n\nQuestion: what happens when the agent skips a Nanostack specialist mid-sprint (e.g. jumps from plan straight to ship)? Pure convention, or is there an enforcement layer? Hooks give me hard-block; skills can only persuade. Curious how you closed that gap.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "garagon",
+    "repo": "aguara",
+    "stars": 74,
+    "description": "Security scanner for AI agent skills and MCP servers. Static analysis, incident respons",
+    "issue_title": "Static analysis for agent skills — would axiom-reflex hooks be in scope?",
+    "issue_body": "Aguara is filling a gap I've been worried about for months — agent skills and MCP servers are increasingly distributed as zip/git installs with minimal review, and \"prompt injection + data exfil + supply chain\" is exactly the right threat model. Single Go binary + no LLM in the detection loop is also the right design call (an LLM-based scanner would be trivially bypassable).\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. The hooks are bash scripts that intercept tool calls — exactly the kind of thing your scanner should probably reason about.\n\nQuestion: does Aguara currently scan PreToolUse hook scripts (bash/.sh files inside hooks/ dirs)? Most of your README examples are MCP server JSON and skill markdown — I'd happily run axiom-reflex through Aguara as a real-world fixture if it helps shape rule coverage, and would link Aguara from my README if the scan passes.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "JamsusMaximus",
+    "repo": "trainingpeaks-mcp",
+    "stars": 51,
+    "description": "TrainingPeaks MCP server for Claude Desktop, Code and Cowork. No API approval needed - w",
+    "issue_title": "Cookie auth via system keyring instead of OAuth — quick question",
+    "issue_body": "The \"no API approval required\" pitch combined with cookie auth stored in the system keyring is a really clean pragmatic call — official TP API gating would have killed this project before users could try it. Also props for being explicit that the cookie never leaves the user's machine; that sentence in the README is what would let me actually recommend this to a friend.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. No keyring layer; my hooks deal with credential exposure by scanning Edit/Write payloads pre-flight (posttooluse-scan-secrets.sh).\n\nQuestion: when the TP cookie expires or rotates, does the MCP fail loud (clear error to the user) or silent (next call returns empty)? I've been bitten by silent auth failures in my own outreach pipeline and now I make the harness scream. Curious how you signal cookie staleness given you can't really detect it without a probe call.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "AThevon",
+    "repo": "TokenEater",
+    "stars": 251,
+    "description": "Native macOS app to monitor Claude AI usage limits and watch your coding sessions live",
+    "issue_title": "Native menu bar + WidgetKit for Claude usage — quick question on data source",
+    "issue_body": "Going native (Swift 5.9 + WidgetKit) instead of Electron for a usage monitor is a decision I'd kiss the ground for — every other Claude usage tracker I've installed eats more battery than the agent it's monitoring. The \"Agent Watchers\" floating overlay showing active Claude Code sessions is also a smart UX call; menu bar alone wouldn't catch the moment you actually need the info.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Different surface (CLI hooks, not GUI), but I do log every tool invocation and could imagine a TokenEater-style overlay reading that log.\n\nQuestion: where does TokenEater pull usage data from? Anthropic's account API, an unofficial endpoint scraped from claude.ai, or local CC session files? The README mentions \"Pro/Max/Team\" as required and that the free plan doesn't expose data — that hints at the official API path, but I'd love to confirm before I think about emitting compatible counters from my hooks.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "PleasePrompto",
+    "repo": "ductor",
+    "stars": 311,
+    "description": "Control Claude Code, Codex CLI and Gemini CLI from Telegram. Live streaming, persistent",
+    "issue_title": "Official CLIs as subprocesses, no spoofing — note from a harness builder",
+    "issue_body": "The discipline to say \"only official CLIs, no API proxying, no SDK patching, no spoofed headers\" up top in the README is the part I respect most — most Telegram-to-Claude bridges I've seen quietly proxy through the API and break the moment Anthropic rotates auth. Subprocess + plain JSON/Markdown state under ~/.d* is also the right boring choice for a tool that needs to survive auth changes.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Same philosophy: no API access at all, just hooks Claude Code already exposes (PreToolUse/PostToolUse/SessionStart/Stop/etc).\n\nQuestion: when a long-running CC session emits 10MB+ of streaming output to Telegram, how do you avoid hitting Telegram's per-message and per-second rate limits? Buffer + chunk, throttle the agent, or surface backpressure into the CLI? I'm about to add a similar streaming layer between my agent and a remote inbox and would love to skip the obvious mistakes.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "johannesjo",
+    "repo": "parallel-code",
+    "stars": 566,
+    "description": "Run Claude Code, Codex, and Gemini side by side — each in its own git worktree",
+    "issue_title": "Worktree-per-agent automation — question on merge conflict UX",
+    "issue_body": "Giving every coding agent its own git branch + worktree automatically is the cleanest answer I've seen to \"how do I run 3 agents without them stomping each other's edits\" — most multi-agent orchestrators try to share a workspace and end up rewriting half the file each turn. The Direct Mode (work on main when you want to) escape hatch is also the right pragmatic choice; sometimes you just want speed.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. Single-agent setup; I've been hand-rolling worktrees with the superpowers:using-git-worktrees skill but considering whether to graduate to something Parallel-Code-shaped.\n\nQuestion: when two agents finish their tasks and both produce mergeable-but-overlapping diffs, what's the merge UX? Manual rebase in the host editor, automated 3-way merge inside the app, or do you just sequence them and let one block? The first time I tried this on my own I got a 4-way conflict that took longer to resolve than just doing the work serially.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  },
+  {
+    "owner": "wxtsky",
+    "repo": "byob",
+    "stars": 57,
+    "description": "Bring Your Own Browser — let your AI agent use the Chrome you already have open",
+    "issue_title": "BYO Browser vs headless Puppeteer — comparison table is exactly right",
+    "issue_body": "The comparison table in your README (WebFetch vs Headless Puppeteer vs byob, scored on \"sees logged-in pages,\" \"passes bot detection,\" \"setup time\") is the most honest framing of this category I've seen — and the answer it lands on (use the user's already-authenticated Chrome) is the obvious right call once someone has the courage to write it down. The 5-minute setup claim plus the install.sh that checks Node/bun/Chrome and walks through MCP registration is the kind of polish solo OSS projects usually skip.\n\nFor context: I just open-sourced axiom-reflex — 7 PreToolUse hooks + 6 skills + 6 subagents for Claude Code. Apache 2.0: github.com/vdalhambra/axiom-reflex. I lean heavily on Playwright with persistent profiles to get past bot detection (LinkedIn, Twitter, Reddit), and byob's MV3 extension approach looks meaningfully cleaner.\n\nQuestion: how does byob handle the case where the user has 50+ tabs open — does the agent see them all, or do you scope per-tab via explicit selection? My Playwright skills break down hard at high tab counts and I'd love to learn from your scoping model.\n\nNo marketing intent — comparing notes between adjacent solo builders. Show HN Tuesday."
+  }
+]
