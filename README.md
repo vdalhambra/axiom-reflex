@@ -1,5 +1,11 @@
 # axiom-reflex
 
+[![GitHub Stars](https://img.shields.io/github/stars/vdalhambra/axiom-reflex?style=flat-square)](https://github.com/vdalhambra/axiom-reflex/stargazers)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square)](./LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/vdalhambra/axiom-reflex?style=flat-square)](https://github.com/vdalhambra/axiom-reflex/commits/main)
+[![Open Issues](https://img.shields.io/github/issues/vdalhambra/axiom-reflex?style=flat-square)](https://github.com/vdalhambra/axiom-reflex/issues)
+[![Discussions](https://img.shields.io/github/discussions/vdalhambra/axiom-reflex?style=flat-square)](https://github.com/vdalhambra/axiom-reflex/discussions)
+
 **Hooks, skills, and custom agents that make Claude Code stop repeating mistakes.** Free, Apache 2.0, production-tested on my own revenue work.
 
 One of the things I kept doing: sending duplicate cold emails. I had a rule against it in memory for 8 days. The rule never fired because rules-as-text live in memory files and depend on me remembering them. Then I built a 30-line hook that blocks the class of error at tool-call time. Haven't sent a duplicate since.
@@ -110,6 +116,10 @@ Skills like `linkedin-identity-switcher` reference my Company Page ID (112885029
 v0.2.0 (2026-04-28). Dogfooded on my own revenue work since day zero — 11 cold emails sent without duplicates, 10 LinkedIn invites, 2 Axiom Company Page posts, 1 Reddit comment landed in r/Inversiones, all tracked via structured traces.
 
 Shipping deltas tracked in [CHANGELOG.md](./CHANGELOG.md).
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=vdalhambra/axiom-reflex&type=Date)](https://star-history.com/#vdalhambra/axiom-reflex&Date)
 
 ## Want the hosted version?
 
