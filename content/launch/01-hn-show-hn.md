@@ -30,7 +30,7 @@ Why I'm sharing: the gap vs. Codex April 2026 background agents isn't the model 
 
 The philosophy: reflexes over reminders. A hook that blocks a known-bad tool call is more reliable than a memory note asking Claude to "remember not to do X." Evidence-based — each skill cites the incident that created it.
 
-Built the cloud version too (axiom-memory.vercel.app, $29/mo for sync across machines + team pattern sharing), but this repo is the free foundation. If you run Claude Code daily you're losing 60-ish minutes per day to context loss, duplicate sends, and trial-and-error on patterns you've already solved. These hooks fix the class, not the instances.
+Built the cloud version too (axiom-memory.vercel.app, $29/mo standard / $19/mo lifetime for the first 100 users — sync across machines + team pattern sharing), but this repo is the free foundation. If you run Claude Code daily you're losing 60-ish minutes per day to context loss, duplicate sends, and trial-and-error on patterns you've already solved. These hooks fix the class, not the instances.
 
 Happy to answer anything about the hooks design, skill architecture, or tradeoffs vs. just writing better memory notes.
 

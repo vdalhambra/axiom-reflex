@@ -16,7 +16,7 @@ That pivot — from rules-as-text to rules-as-hooks — was the unlock. Open-sou
 
 - **7 hooks:** Gmail dedup BLOCK, Playwright pattern WARN, secrets scanner, session heartbeat, pre-compact state dump, daily note reminder, subagent logger
 - **6 auto-skills:** Gmail dedup preflight, LinkedIn identity switcher, Twitter thread patterns, Playwright safe routing, Reddit comment tone, Gmail reply-in-thread
-- **6 custom subagents:** outreach-researcher (Haiku), reply-check (Haiku), pattern-consolidator (Sonnet, weekly sleep-time compute), verifier-adversarial (Haiku, Devin-pattern), incident-scribe, heartbeat-watcher, dispatcher (model routing)
+- **6 custom subagents** with scoped tools + explicit model tier: outreach-researcher (Haiku), reply-check (Haiku), pattern-consolidator (Sonnet, weekly sleep-time compute), verifier-adversarial (Haiku, Devin-pattern), incident-scribe, rayo-heartbeat-watcher
 - **1 slash command `/status`** — instant dashboard
 - **1 reference MCP** (`mem-refs-mcp`, JSONL-backed)
 
