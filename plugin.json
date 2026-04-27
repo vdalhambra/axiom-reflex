@@ -1,6 +1,6 @@
 {
   "name": "axiom-reflex",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Hooks, skills, agents, and MCPs that make Claude Code more autonomous, resilient, and reflex-driven. Built by Axiom for AI-first solo founders.",
   "author": {
     "name": "Víctor Domínguez",

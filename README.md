@@ -113,7 +113,7 @@ Skills like `linkedin-identity-switcher` reference my Company Page ID (112885029
 
 ## Status
 
-v0.2.0 (2026-04-28). Dogfooded on my own revenue work since day zero — 11 cold emails sent without duplicates, 10 LinkedIn invites, 2 Axiom Company Page posts, 1 Reddit comment landed in r/Inversiones, all tracked via structured traces.
+v0.2.0 (2026-04-28). Dogfooded on my own revenue work since day zero — 56 cold emails sent without duplicates, 25+ LinkedIn touchpoints, 5 Axiom Company Page comments, 3 Reddit comments live in finance/builder subs, all tracked via structured traces.
 
 Shipping deltas tracked in [CHANGELOG.md](./CHANGELOG.md).
 
